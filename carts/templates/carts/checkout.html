@@ -1,0 +1,428 @@
+{% extends "store/base.html" %}
+{% load cart_item_count %}
+{% block header %}
+    <div class="container">
+        <div class="row js--anime-1">
+            <div class="col-lg-7">
+                <h1>&nbsp;</h1>
+            </div>
+            <div class="col-lg-5">
+                <div class="header-text-box">
+                    <h1>Billing Details</h1>
+                    <a href="#" class="btn btn-full link-billing"><i class="fa fa-angle-double-down"></i> </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock header%}
+
+
+{% block content %}
+      {% comment %}<div class="container" style="margin-top: 10px">
+    <div class="row">
+      <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Your cart</span>
+          <span class="badge badge-secondary badge-pill">{{ request.user|cart_item_count }}</span>
+        </h4>
+        <ul class="list-group mb-3">
+          {% for cart in carts.items.all %}
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                  <h6 class="my-0">{{ cart.quantity }}X {{ cart.items.name }}</h6>
+                  <small class="text-muted">Brief description</small>
+              </div>
+              <span class="text-muted">#{{ cart.cart_item_price|floatformat:2 }}</span>
+              </li>
+          {% endfor %}
+        </ul>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (Naira)</span>
+            <strong>#{{ carts.cart_total_price|floatformat:2 }}</strong>
+          </li>
+        </ul>
+      </div>{% endcomment %}
+        <div class="container" style="margin-top: 10px; width: ">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="billing-box">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Your cart</span>
+                        <span class="badge badge-secondary badge-pill">{{ request.user|cart_item_count }}</span>
+                    </h4>
+                    <ul class="list-group mb-3">
+                        {% for cart in carts.items.all %}
+                             <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h6 class="my-0" style="font-size: 16px">{{ cart.quantity }}X {{ cart.items.name }}</h6>
+                                </div>
+                                <span class="text-muted" style="font-size: 16px">#{{ cart.cart_item_price|floatformat:2 }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <ul class="list-group mb-3">
+                      <li class="list-group-item d-flex justify-content-between">
+                        <span style="font-size: 16px">Total (Naira)</span>
+                        <strong style="font-size: 16px">#{{ carts.cart_total_price|floatformat:2 }}</strong>
+                      </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+    <section class="section-billing js--section-billing">
+        <div class="container">
+            <div class="row">
+                <h2>Billing Details</h2>
+            </div>
+            <div class="row js--anime-6">
+                <div class="col-lg-12">
+                    <div class="billing-box">
+                        <form method="POST" action="{% url 'carts:pay' %}" class="needs-validation" novalidate>
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    {{ forms.address }}
+                                    <div class="invalid-feedback">
+                                        Please enter your shipping address.
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ forms.apartment_address }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    {{ forms.country }}
+                                    <div class="invalid-feedback">
+                                        Please enter your country.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    {{ forms.state }}
+                                    <div class="invalid-feedback">
+                                        Please enter your state.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                   <div class="form-sub">
+                                    <button type="submit" class="btn btn-sm btn-primary">Proceed To PayStack</button>
+                                   </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        {% comment %}
+          <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Billing address</h4>
+            <form method="POST" class="needs-validation" novalidate>
+                {% csrf_token %}
+              <div class="mb-3">
+                <label for="address">Address</label>
+                {{   forms.address }}
+                <div class="invalid-feedback">
+                  Please enter your shipping address.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="address">Apartment Address(optional)</label>
+                {{   forms.apartment_address }}
+              </div>
+              <div class="mb-3">
+                <label for="address">Country</label>
+                {{   forms.country }}
+                <div class="invalid-feedback">
+                  Please enter your country.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="address">State</label>
+                {{   forms.state }}
+                <div class="invalid-feedback">
+                  Please enter your state.
+                </div>
+              </div>
+              <!--<hr class="mb-4">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address">
+                <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
+              </div>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="save-info">
+                <label class="custom-control-label" for="save-info">Save this information for next time</label>
+              </div>
+              <hr class="mb-4">
+              <h4 class="mb-3">Payment</h4>
+              <div class="d-block my-3">
+                <div class="custom-control custom-radio">
+                  <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                  <label class="custom-control-label" for="credit">Credit card</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                  <label class="custom-control-label" for="debit">Debit card</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                  <label class="custom-control-label" for="paypal">Paypal</label>
+                </div>
+              </div>-->
+             <!-- <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="cc-name">Name on card</label>
+                  <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                  <small class="text-muted">Full name as displayed on card</small>
+                  <div class="invalid-feedback">
+                    Name on card is required
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="cc-number">Credit card number</label>
+                  <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                  <div class="invalid-feedback">
+                    Credit card number is required
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 mb-3">
+                  <label for="cc-expiration">Expiration</label>
+                  <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                  <div class="invalid-feedback">
+                    Expiration date required
+                  </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label for="cc-expiration">CVV</label>
+                  <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                  <div class="invalid-feedback">
+                    Security code required
+                  </div>
+                </div>
+              </div>-->
+              <hr class="mb-4">
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to payment with paystack</button>
+            </form>
+          </div>{% endcomment %}
+
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVN
+  <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+  <script src="../../../../assets/js/vendor/popper.min.js"></script>
+  <script src="../../../../dist/js/bootstrap.min.js"></script>
+  <script src="../../../../assets/js/vendor/holder.min.js"></script>
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

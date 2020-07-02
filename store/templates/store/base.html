@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% load cart_item_count %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'store/images_resources/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'store/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+    <title>eStore</title>
+</head>
+
+<body>
+    <header class="js--section-home">
+        <nav class="navbar navbar-expand-sm navbar-light js--nav">
+            <div class="container">
+                <img class="link-home logo-white" src="{% static 'store/images_resources/eStore White.png' %}" alt="White Logo">
+                <img class="link-home logo-green" src="{% static 'store/images_resources/e-Store Green.png' %}" alt="Green Logo">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="ti-menu js--menu-icon"></span>
+                   <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsExample03">
+                    <ul class="navbar-nav mr-auto navbar-right">
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">&MediumSpace;</a>
+                        </li>
+                      </ul>
+                  <ul class="navbar-nav nav-links navbar-right">
+                    <li class="nav-item">
+                        <a href="{% url 'store:home' %}" class="nav-link link-home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link link-about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link link-offers">Our Offers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link link-contact">Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Order</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                          <a class="dropdown-item link-products" href="{% url 'store:home' %}">Products</a>
+                        </div>
+                      </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Shopping Cart">
+                        <a href="{% url "carts:order_summary" %}" class="nav-link"><i class="fa fa-shopping-cart"></i>  {{ request.user|cart_item_count }}</a>
+                    </li>
+                  </ul>
+                </div>
+           </div>
+        </nav>
+        <div class="container" style="margin-top: 10px;">
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.success %}
+                    <div class="alert-dismissible alert  alert-success container" role="main">
+                    {{ message }}
+                    </div>
+                {% elif message.info %}
+                    <div class="alert-dismissible alert  alert-info container" role="main">
+                    {{ message }}
+                    </div>
+                {% else %}
+                    <div class="alert-dismissible alert  alert-info container" role="main">
+                    {{ message }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        </div>
+
+        {% block header %}
+
+        {% endblock %}
+    </header>
+        {% block content %}
+
+        {% endblock %}
+    <footer class="section-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright © 2020 by Babayega. All rights reserved.</p>
+                    <a href="{% url 'store:home' %}" class="link-home">Back to top</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="{% static 'store/javascript/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'store/javascript/bootstrap.min.js' %}"></script>
+    <script src="{% static 'store/javascript/popper.min.js' %}"></script>
+    <script src="{% static 'store/javascript/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'store/javascript/modal.js' %}"></script>
+    <script src="{% static 'store/javascript/script.js' %}"></script>
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="resources/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="vendors/css/animate.css">
+    <link rel="stylesheet" href="vendors/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/fonts/regular/icofont.min.css">
+    <link rel="stylesheet" href="resources/fonts/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="resources/css/style.css">
+    <title>eStore</title>
+</head>
+<body>
+    <header class="js--section-home">
+        <nav class="navbar navbar-expand-sm navbar-light js--nav">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img class="link-home logo-white" src="resources/img/eStore White.png" alt="White Logo"> </a>
+                <a class="navbar-brand" href="#"><img class="link-home logo-green" src="resources/img/e-Store Green.png" alt="Green Logo"> </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="ti-menu js--menu-icon"></span>
+                   <span class="navbar-toggler-icon"></span> -->
+                <!--</button>
+
+                <div class="collapse navbar-collapse" id="navbarsExample03">
+                    <ul class="navbar-nav mr-auto navbar-right">
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">&MediumSpace;</a>
+                        </li>
+                      </ul>
+                  <ul class="navbar-nav nav-links navbar-right">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link link-home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link link-about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link link-offers">Our Offers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link link-contact">Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Order</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                          <a class="dropdown-item link-products" href="#">Products</a>
+                          <a class="dropdown-item link-billing" href="billing.html">Billing action</a>
+                        </div>
+                      </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Shopping Cart">
+                        <a href="order.html" class="nav-link"><i class="ti-shopping-cart" ></i></a>
+                    </li>
+                  </ul>
+                </div>
+           </div>
+        </nav>
+
+        <div class="container">
+            <div class="row js--anime-1">
+                <div class="col-lg-7">
+                    <h1>&nbsp;</h1>
+                </div>
+                <div class="col-lg-5">
+                    <div class="header-text-box">
+                        <h1>The Complete <br> Online Store</h1>
+                        <p>Best Trending Collection here</p>
+                        <a href="#" class="btn btn-full link-products">Shop Now</a>
+                        <a href="#" class="btn btn-ghost link-offers">Show Me More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <section class="section-about js--section-about">
+        <div class="container">
+            <div class="row">
+                <h2>About Us</h2>
+                <p class="about-header-text js--anime-2">Hello, we’re eStore, your new premium online store service. We're here to attend to all your acessory needs.  So let us take care of that, we’re really good at it, we promise!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-offers  js--section-offers">
+        <div class="container">
+            <div class="row">
+                <h2>Our Offers </h2>
+            </div>
+            <div class="row js--anime-3">
+                <div class="col-lg-4">
+                    <div class="offers-box">
+                        <i class="ti-truck"></i>
+                        <h4>Free Delivery</h4>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="offers-box mid">
+                        <i class="ti-announcement"></i>
+                        <h4>Free Return</h4>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="offers-box">
+                        <i class="ti-gift"></i>
+                        <h4>Product With Gift</h4>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row js--anime-3">
+                <div class="col-lg-4">
+                    <div class="offers-box">
+                        <i class="ti-credit-card"></i>
+                        <h4>Credit Card Support</h4>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="offers-box mid">
+                        <i class="ti-desktop"></i>
+                        <h4>Online Order</h4>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="offers-box">
+                        <i class="icofont-live-support"></i>
+                        <h4>Customer Care </h4>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-products js--section-products">
+        <div class="container">
+            <div class="row">
+                <h2>Products</h2>
+            </div>
+            <div class="row js--anime-4">
+                <div class="col-lg-4">
+                    <div class="products-box">
+                        <div class="products-images">
+                            <img src="resources/img/product1.png" alt="">
+                        </div>
+                        <p class="item">Shorts</p>
+                        <p class="product-price">$40.00</p>
+                        <div class="div-cart-links">
+                            <input type="number" id="no" placeholder="Amount" min="0" max="10">
+                            <a href="order.html" class="cart-links">Add to Cart |</a>
+                            <a href="order.html" class="cart-links">Remove From Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="products-box active">
+                        <div class="products-images">
+                            <img src="resources/img/product3.png" alt="">
+                        </div>
+                        <p>Cardigan</p>
+                        <p class="product-price">$50.00</p>
+                        <div class="div-cart-links">
+                            <input type="number" placeholder="Amount" min="0" max="10">
+                            <a href="order.html" class="cart-links">Add to Cart |</a>
+                            <a href="order.html" class="cart-links">Remove From Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="products-box">
+                        <div class="products-images">
+                            <img src="resources/img/product2.png" alt="">
+                        </div>
+                        <p>Cardigan</p>
+                        <p class="product-price">$50.00</p>
+                        <div class="div-cart-links">
+                            <input type="number" placeholder="Amount" min="0" max="10">
+                            <a href="order.html" class="cart-links">Add to Cart |</a>
+                            <a href="order.html" class="cart-links">Remove From Cart</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row js--anime-4">
+                <div class="col-lg-4">
+                    <div class="products-box">
+                        <div class="products-images">
+                            <img src="resources/img/s1.jpg" alt="">
+                        </div>
+                        <p>Shoes</p>
+                        <p class="product-price">$60.00</p>
+                        <div class="div-cart-links">
+                            <input type="number" placeholder="Amount" min="0" max="10">
+                            <a href="order.html" class="cart-links">Add to Cart |</a>
+                            <a href="order.html" class="cart-links">Remove From Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="products-box active">
+                        <div class="products-images">
+                            <img src="resources/img/s2.jpg" alt="">
+                        </div>
+                        <p>Shoes</p>
+                        <p class="product-price">$60.00</p>
+                        <div class="div-cart-links">
+                            <input type="number" placeholder="Amount" min="0" max="10">
+                            <a href="order.html" class="cart-links">Add to Cart |</a>
+                            <a href="order.html" class="cart-links">Remove From Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="products-box">
+                        <div class="products-images">
+                            <img src="resources/img/s3.jpg" alt="">
+                        </div>
+                        <p>Shoes</p>
+                        <p class="product-price">$60.00</p>
+                        <div class="div-cart-links">
+                            <input type="number" placeholder="Amount" min="0" max="10">
+                            <a href="order.html" class="cart-links">Add to Cart |</a>
+                            <a href="order.html" class="cart-links">Remove From Cart</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row js--anime-4">
+                <div class="col-lg-4">
+                    <div class="products-box">
+                        <div class="products-images">
+                            <img src="resources/img/prodect_details_2.png" alt="">
+                        </div>
+                        <p>Shirts</p>
+                        <p class="product-price">$50.00</p>
+                        <div class="div-cart-links">
+                            <input type="number" placeholder="Amount" min="0" max="10">
+                            <a href="order.html" class="cart-links">Add to Cart |</a>
+                            <a href="order.html" class="cart-links">Remove From Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="products-box active">
+                        <div class="products-images">
+                            <img src="resources/img/prodect_details_3.png" alt="">
+                        </div>
+                        <p>Shirts</p>
+                        <p class="product-price">$50.00</p>
+                        <div class="div-cart-links">
+                            <input type="number" placeholder="Amount" min="0" max="10">
+                            <a href="order.html" class="cart-links">Add to Cart |</a>
+                            <a href="order.html" class="cart-links">Remove From Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="products-box">
+                        <div class="products-images">
+                            <img src="resources/img/prodect_details_4.png" alt="">
+                        </div>
+                        <p>Shirts</p>
+                        <p class="product-price">$50.00</p>
+                        <div class="div-cart-links">
+                            <input type="number" placeholder="Amount" min="0" max="10">
+                            <a href="order.html" class="cart-links">Add to Cart |</a>
+                            <a href="order.html" class="cart-links">Remove From Cart</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row js--anime-4">
+                <div class="col-lg-4">
+                    <div class="products-box">
+                        <div class="products-images">
+                            <img src="resources/img/s4.jpg" alt="">
+                        </div>
+                        <p>Heels</p>
+                        <p class="product-price">$40.00</p>
+                         <div class="div-cart-links">
+                             <input type="number" placeholder="Amount" min="0" max="10">
+                             <a href="order.html" class="cart-links">Add to Cart |</a>
+                             <a href="order.html" class="cart-links">Remove From Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="products-box active">
+                        <div class="products-images">
+                            <img src="resources/img/s6.jpg" alt="">
+                        </div>
+                        <p>Sandal</p>
+                        <p class="product-price">$50.00</p>
+                         <div class="div-cart-links">
+                             <input type="number" placeholder="Amount" min="0" max="10">
+                             <a href="order.html" class="cart-links">Add to Cart |</a>
+                             <a href="order.html" class="cart-links">Remove From Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="products-box">
+                        <div class="products-images">
+                            <img src="resources/img/s11.jpg" alt="">
+                        </div>
+                        <p>Slipper</p>
+                        <p class="product-price">$40.00</p>
+                         <div class="div-cart-links">
+                             <input type="number" placeholder="Amount" min="0" max="10">
+                             <a href="order.html" class="cart-links">Add to Cart |</a>
+                             <a href="order.html" class="cart-links">Remove From Cart</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section-contact js--section-contact">
+        <div class="container">
+            <div class="row">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="row js--anime-7">
+                <div class="col-lg-6">
+                    <div class="contact-box">
+                        <form action="#" method="POST">
+                            <input type="text" placeholder="Name">
+                            <input type="email" placeholder="Email">
+                            <input type="tel" placeholder="Phone">
+                            <textarea placeholder="Your message here..."></textarea>
+                            <div class="form-sub">
+                                <a href="#" class="btn btn-full">Submit</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="details-box">
+                        <h4><i class="ti-mobile"></i>  Phone</h4>
+                        <p>+121 098 8907 9987</p>
+                        <p>+121 098 8907 9987</p>
+                    </div>
+                    <div class="details-box">
+                        <h4><i class="ti-email"></i>  Email</h4>
+                        <a href="#">info@email.com</a>
+                        <a href="#">info@email.com</a>
+                    </div>
+                    <div class="details-box">
+                        <h4><i class="ti-location-pin"></i>  Location</h4>
+                        <p>Buttonwood, California. Rosemead, CA 91770</p>
+                        <p>Honey Avenue, New York City </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="section-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright © 2020 by PJP. All rights reserved.</p>
+                    <a href="#" class="link-home">Back to top</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="vendors/js/jquery-3.5.1.min.js"></script>
+    <script src="vendors/js/bootstrap.min.js"></script>
+    <script src="vendors/js/popper.min.js"></script>
+    <script src="vendors/js/jquery.waypoints.min.js"></script>
+    <script src="vendors/js/modal.js"></script>
+    <script src="resources/js/script.js"></script>
+</body>
+</html>-->
+
+
+
+{% comment %}
+
+<link rel="stylesheet" href="{% static 'store/fonts/icofont.min.css' %}">
+    <link rel="stylesheet" href="{% static 'store/fonts/themify-icons.css' %}"><body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'store:home'%}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <form method="GET" class="form-inline my-2 my-md-0" style="margin-left: 3px;">
+                <input class="form-control" type="text" placeholder="Search for products" aria-label="Search" name="q" value="{{ request.GET.q }}"><button type="submit" class="btn btn-outline-primary" style="margin-left: 5px;">Search</button>
+            </form>
+          </li>
+          {% if request.user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" style="margin-left: 500%;" href="{% url "carts:order_summary" %}">Cart {{ request.user|cart_item_count }}</a>
+              </li>
+              <li>
+                <a class="nav-link" style="margin-left: 1680%;" href="{% url 'users:logout' %}">Logout</a>
+              </li>
+          {% else %}
+              <li class="nav-item">
+                <a class="nav-link" style="margin-left: 1800%;" href="{% url "users:login" %}">Login</a>
+              </li>
+              <li>
+                <a class="nav-link" style="margin-left: 1680%;" href="#">Signup</a>
+              </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>{% endcomment %}

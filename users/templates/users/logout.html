@@ -1,0 +1,12 @@
+{% extends "store/base.html" %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="container">
+            <h3>You have logged out successfully</h3>
+            <p><a href="{% url 'users:login' %}">Login again</a></p>
+            <button type="submit">Login</button>
+        </div>
+    </form>
+
+{% endblock %}

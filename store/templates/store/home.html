@@ -1,0 +1,202 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% block header %}
+    <div class="container">
+        <div class="row js--anime-1">
+            <div class="col-lg-7">
+                <h1>&nbsp;</h1>
+            </div>
+            <div class="col-lg-5">
+                <div class="header-text-box">
+                    <h1>The Complete <br> Online Store</h1>
+                    <p>Best Trending Collection here</p>
+                    <a href="{% url 'store:home' %}" class="btn btn-full link-products">Shop Now</a>
+                    <a href="#" class="btn btn-ghost link-offers">Show Me More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    <section class="section-about js--section-about">
+        <div class="container">
+            <div class="row">
+                <h2>About Us</h2>
+                <p class="about-header-text js--anime-2">Hello, we’re eStore, your new premium online store service. We're here to attend to all your acessory needs.  So let us take care of that, we’re really good at it, we promise!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-offers  js--section-offers">
+        <div class="container">
+            <div class="row">
+                <h2>Our Offers </h2>
+            </div>
+            <div class="row js--anime-3">
+                <div class="col-lg-4">
+                    <div class="offers-box">
+                        <i class="fa fa-truck"></i>
+                        <h4>Free Delivery</h4>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="offers-box mid">
+                        <i class="fa fa-bullhorn"></i>
+                        <h4>Free Return</h4>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="offers-box">
+                        <i class="fa fa-gift"></i>
+                        <h4>Product With Gift</h4>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row js--anime-3">
+                <div class="col-lg-4">
+                    <div class="offers-box">
+                        <i class="fa fa-credit-card"></i>
+                        <h4>Credit Card Support</h4>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="offers-box mid">
+                        <i class="fa fa-desktop"></i>
+                        <h4>Online Order</h4>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="offers-box">
+                        <i class="fa fa-phone"></i>
+                        <h4>Customer Care </h4>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-products js--section-products">
+        <div class="container">
+            <div class="row">
+                <h2>Products</h2>
+            </div>
+            <div class="row js--anime-4">
+                {% for product in products %}
+                    <div class="col-lg-4">
+                    <div class="products-box">
+                        <div class="products-images">
+                            <img src="{{ product.images.url }}" alt="">
+                        </div>
+                        <p class="item" style="text-transform: capitalize; font-size:16px ">{{ product.name }}</p>
+                        {% if product.discount_price %}
+                            <p class="product-price" style="font-size:16px">#{{ product.discount_price|floatformat:2 }} <small style="text-transform: capitalize;">discounted price</small></p>
+                        {% else %}
+                            <p class="product-price" style="font-size:16px">#{{ product.price|floatformat:2 }}</p>
+                        {% endif %}
+                        <div class="div-cart-links">
+                            <a href="{% url 'carts:add_to_cart' product.slug %}" class="cart-links">Add to Cart |</a>
+                            <a href="order.html" class="cart-links">View Product</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <div class="col-md-4">
+        {% if products.has_other_pages %}
+            {% if products.has_previous %}
+                <a class="btn btn-outline-secondary" href="?page={{posts.previous_page_number}}" style="margin-right: 3px;">&laquo; Previous</a>
+            {% endif %}
+            {% for numbers in products.paginator.page_range %}
+                {% if products.number == numbers %}
+                    <a class="btn btn-outline-secondary" href="?page={{numbers}}">{{numbers}}</a>
+                {% elif numbers > products.number|add:'-3' and numbers < products.number|add:'3' %}
+                    <a class="btn btn-outline-info " href="?page={{numbers}} ">{{numbers}}</a>
+                {% endif %}
+            {% endfor %}
+            {% if product.has_next %}
+                <a class="btn btn-outline-secondary" href="?page={{posts.next_page_number}}" style="margin-left: 3px;"> Next &raquo;</a>
+            {% endif %}
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+
+
+
+{% comment %}<div class="album py-5 bg-light" style="margin-top: -23px;">
+        <div class="container">
+          <div class="row">
+            {% for product in products %}
+                <div class="col-md-4">
+                  <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" src="{{ product.images.url }}"
+                         alt="{{ product.name }}" style="height: 150px; width: 348px;">
+                    <div class="card-body">
+                      <p class="card-text">{{ product.name }}</p>
+                      {% if product.discount_price %}
+                        <p class="card-text">#{{ product.discount_price|floatformat:2 }} <small>discounted price</small></p>
+                      {% else %}
+                        <p class="card-text">#{{ product.price|floatformat:2 }}</p>
+                      {% endif %}
+                      <div class="d-flex justify-content-between align-items-center">
+                          <div class="btn-group">
+                            <a class="btn btn-sm btn-outline-secondary" href="{% url 'carts:add_to_cart' product.slug %}">Add to Cart</a>
+                            <a class="btn btn-sm btn-outline-dark" style="margin-left: 5px;" href="#">Let us View Product</a>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            {% endfor %}
+            <div class="col-md-4">
+                {% if products.has_other_pages %}
+                    {% if products.has_previous %}
+                        <a class="btn btn-outline-secondary" href="?page={{posts.previous_page_number}}" style="margin-right: 3px;">&laquo; Previous</a>
+                    {% endif %}
+                    {% for numbers in products.paginator.page_range %}
+                        {% if products.number == numbers %}
+                            <a class="btn btn-outline-secondary" href="?page={{numbers}}">{{numbers}}</a>
+                        {% elif numbers > products.number|add:'-3' and numbers < products.number|add:'3' %}
+                            <a class="btn btn-outline-info " href="?page={{numbers}} ">{{numbers}}</a>
+                        {% endif %}
+                    {% endfor %}
+                    {% if product.has_next %}
+                        <a class="btn btn-outline-secondary" href="?page={{posts.next_page_number}}" style="margin-left: 3px;"> Next &raquo;</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+          </div>
+        </div>
+    </div>{% endcomment %}
+
+
+{% comment %}<div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="card-body">
+                            <p class="card-text">{{ product.name }}</p>
+                            <p class="card-text">#{{ product.price|floatformat:2 }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>{% endcomment %}

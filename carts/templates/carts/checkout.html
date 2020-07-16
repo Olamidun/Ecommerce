@@ -82,7 +82,7 @@
             <div class="row js--anime-6">
                 <div class="col-lg-12">
                     <div class="billing-box">
-                        <form method="POST" action="{% url 'carts:pay' %}" class="needs-validation" novalidate>
+                        <form method="POST" class="needs-validation" novalidate>
                             {% csrf_token %}
                             <div class="row">
                                 <div class="col-lg-6">

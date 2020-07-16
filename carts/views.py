@@ -117,36 +117,18 @@ def payment(request):
     carts = Cart.objects.get(user=request.user, ordered=False)
 
     headers = {
-        'Authorization': 'Bearer FLWSECK_TEST-23b5f27de55727902a405df50dfea980-X',
+        "Authorization": "Bearer sk_test_b17ddd192493898c2ceb258eebbe02771cb4aaa9",
+        "Content-Type": "application/json"
     }
     data = {
-       "tx_ref": "hooli-tx-1920bbtytty",
-        "amount": "100",
-        "currency": "NGN",
-        "redirect_url": "https://webhook.site/9d0b00ba-9a69-44fa-a43d-a82c33c36fdc",
-        "payment_options":"card",
-        "meta": {
-          "consumer_id": 23,
-          "consumer_mac": "92a3-912ba-1192a"
-        },
-        "customer": {
-         "email": "user@gmail.com",
-          "phonenumber": "080****4528",
-          "name":"Yemi Desola"
-        },
-       "customizations": {
-          "title": "Pied Piper Payments",
-          "description": "Middleout isn't free. Pay the price",
-          "logo": "https://assets.piedpiper.com/logo.png"
-            }
+        "email": "kolapoolamidun@gmail.com",
+        "amount": "20000"
+    }
 
-}
-
-    url = 'https://api.flutterwave.com/v3/payments'
+    url = 'https://api.paystack.co/transaction/initialize'
     response = requests.post(url, headers=headers, data=data)
     response.json()
     print(response.status_code)
-    print(request.user.id)
     return HttpResponse(response)
 
 

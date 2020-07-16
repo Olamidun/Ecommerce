@@ -130,9 +130,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_REDIRECT_URL = 'store:home'
 LOGIN_URL = 'users:login'
 
-# secretkey = sk_test_89c484c8437e2c0065275f4ea87573e8fb814b67
+# secretkey = sk_test_b17ddd192493898c2ceb258eebbe02771cb4aaa9
 # publickey = pk_test_68c6c9aa04092566a7a23b346a69ac4fcfb85c08
 
 
 #fw_secret_key = 'FLWSECK_TEST-23b5f27de55727902a405df50dfea980-X'
 # fw_public_key = 'FLWPUBK_TEST-9e5837cc08f1b6e414179a6b489a1709-X'
+# medium_post = "https://medium.com/@olamidunkolapo/c4a7ffce9e5d?source=friends_link&sk=c4d9d2e72d0430d12a457682b4f11565"
+# 'https://medium.com/@olamidunkolapo/model-relationships-in-django-c4a7ffce9e5d?sk=c4d9d2e72d0430d12a457682b4f11565'
+# story_link = 'https://medium.com/@olamidunkolapo/model-relationships-in-django-c4a7ffce9e5d'

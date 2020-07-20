@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d25bd1af-d3ef-4e59-9a2a-62cbd17ac507" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/carts/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/carts/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/carts/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/carts/templates/carts/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/carts/templates/carts/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carts/templates/carts/payment.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/carts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/carts/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/carts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/carts/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -41,7 +45,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Projects/hng-user-validator" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -136,7 +140,15 @@
       <workItem from="1594084386850" duration="11000" />
       <workItem from="1594134505296" duration="849000" />
       <workItem from="1594487401653" duration="4101000" />
-      <workItem from="1594911550678" duration="2237000" />
+      <workItem from="1594911550678" duration="2712000" />
+      <workItem from="1594938267774" duration="2454000" />
+      <workItem from="1594942084221" duration="5279000" />
+      <workItem from="1594949957452" duration="3360000" />
+      <workItem from="1594955160737" duration="1470000" />
+      <workItem from="1594991412001" duration="8717000" />
+      <workItem from="1595031877294" duration="1878000" />
+      <workItem from="1595081909926" duration="1739000" />
+      <workItem from="1595199758281" duration="8382000" />
     </task>
     <servers />
   </component>
@@ -175,14 +187,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1466" height="194" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592524402587" />
-    <state x="146" y="0" key="SettingsEditor" timestamp="1592232729923">
+    <state x="146" y="0" key="SettingsEditor" timestamp="1594954989299">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="146" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1592232729923" />
-    <state x="379" y="194" key="com.intellij.ide.util.TipDialog" timestamp="1594487401774">
+    <state x="146" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1594954989299" />
+    <state x="379" y="194" key="com.intellij.ide.util.TipDialog" timestamp="1595199776237">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="379" y="194" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1594487401774" />
+    <state x="379" y="194" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1595199776237" />
     <state x="347" y="-1" width="840" height="1034" key="search.everywhere.popup" timestamp="1593279681641">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

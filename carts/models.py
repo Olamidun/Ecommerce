@@ -27,7 +27,11 @@ class Cart(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     ordered = models.BooleanField(default=False)
-    billing_address = models.ForeignKey('BillingAddress', on_delete=models.SET_NULL, blank=True, null=True )
+    request_refund = models.BooleanField(default=False)
+    granted = models.BooleanField(default=False)
+    reference = models.CharField(max_length=16, blank=True, null=True)
+    billing_address = models.ForeignKey('BillingAddress', on_delete=models.SET_NULL, blank=True, null=True)
+    payment = models.ForeignKey('Payment', on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
         return str(self.id)
@@ -58,7 +62,19 @@ class BillingAddress(models.Model):
 
 
 class Payment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
-    transaction_reference = models.CharField(max_length=16)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
+    amount = models.FloatField(null=True, blank=True)
 
+    time_stamp = models.DateTimeField(auto_now_add=True,null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.user.username}'s payment of {self.amount}"
+
+
+class Refund(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    reason = models.TextField()
+    accepted = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.pk}'

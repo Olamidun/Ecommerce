@@ -1,4 +1,4 @@
-from carts.models import BillingAddress, Payment
+from carts.models import BillingAddress
 from django import forms
 
 
@@ -34,5 +34,16 @@ class BillingAddressForm(forms.ModelForm):
         fields = ('address', 'apartment_address', 'country', 'state')
 
 
-class PaymentForm(forms.Form):
-    email = forms.EmailField()
+class RefundForm(forms.Form):
+    ref_code = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'class': 'needs-validation',
+            'placeholder': 'Enter your reference code'
+        }
+    ))
+    message = forms.CharField(widget=forms.Textarea(
+        attrs={
+            'class': 'needs-validation',
+            'placeholder': 'Leave a message'
+        }
+    ))

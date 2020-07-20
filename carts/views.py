@@ -1,14 +1,18 @@
 from django.shortcuts import get_object_or_404, HttpResponse, redirect, render
 from django.http import HttpResponseRedirect
 from django.core.exceptions import ObjectDoesNotExist
-from carts.models import Cart, CartItems, Payment
+from carts.models import Cart, CartItems, Payment, Refund
 from django.contrib.auth.models import User
 from store.models import Product
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from carts.forms import BillingAddressForm, PaymentForm
-import requests
+from carts.forms import BillingAddressForm, RefundForm
+from paystack.resource import TransactionResource
+from pypaystack import Transaction
+from python_paystack.paystack_config import PaystackConfig
+import random
+import string
 
 
 @login_required
@@ -113,23 +117,65 @@ def checkout(request):
         return redirect('carts:checkout')
 
 
-def payment(request):
+def pay(request):
     carts = Cart.objects.get(user=request.user, ordered=False)
+    rand = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(16)])
+    secret_key = 'sk_test_b17ddd192493898c2ceb258eebbe02771cb4aaa9'
+    reference = rand
+    test_email = request.user.email
+    test_amount = int(carts.cart_total_price()*100)
+    client = TransactionResource(secret_key, reference)
+    response = client.initialize(test_amount, test_email)
+    authorization_url = response['data']['authorization_url']
+    print(response)
+    # authorization = client.authorize()
 
-    headers = {
-        "Authorization": "Bearer sk_test_b17ddd192493898c2ceb258eebbe02771cb4aaa9",
-        "Content-Type": "application/json"
-    }
-    data = {
-        "email": "kolapoolamidun@gmail.com",
-        "amount": "20000"
-    }
+    # create payment object
+    payment = Payment()
+    payment.amount = test_amount
+    payment.user = request.user
+    payment.save()
 
-    url = 'https://api.paystack.co/transaction/initialize'
-    response = requests.post(url, headers=headers, data=data)
-    response.json()
-    print(response.status_code)
-    return HttpResponse(response)
+    # ASSIGN PAYMENT TO THE ORDER
+    cart_items = carts.items.all()
+    cart_items.update(ordered=True)
+    for items in cart_items:
+        items.save()
+    carts.ordered = True
+    carts.payment = payment
+    carts.reference = reference
+    carts.save()
+    return redirect(authorization_url)
+
+
+def request_refund(request):
+    if request.method == 'POST':
+        form = RefundForm(request.POST)
+        if form.is_valid():
+            ref_code = form.cleaned_data.get('ref_code')
+            message = form.cleaned_data.get('message')
+            # Get the Cart/Order
+            try:
+                cart = Cart.objects.get(reference=ref_code)
+                cart.request_refund = True
+                cart.save()
+                #STORE THE REFUND
+                refund = Refund()
+                refund.cart = cart
+                refund.reason = message
+                refund.save()
+                messages.info(request, 'Your request was received')
+                return redirect('carts:refund')
+            except ObjectDoesNotExist:
+                messages.info(request, 'This order does not exist.')
+                return redirect('carts:refund')
+        else:
+            messages.info(request, 'This order does not exist.')
+            return redirect('carts:refund')
+
+    else:
+        form = RefundForm()
+        return render(request, 'carts/request-refund.html', {'form': form})
 
 
 

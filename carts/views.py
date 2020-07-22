@@ -11,6 +11,7 @@ from carts.forms import BillingAddressForm, RefundForm
 from paystack.resource import TransactionResource
 from pypaystack import Transaction
 from python_paystack.paystack_config import PaystackConfig
+from django.conf import settings
 import random
 import string
 
@@ -120,7 +121,7 @@ def checkout(request):
 def pay(request):
     carts = Cart.objects.get(user=request.user, ordered=False)
     rand = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(16)])
-    secret_key = 'sk_test_b17ddd192493898c2ceb258eebbe02771cb4aaa9'
+    secret_key = settings.API_SECRET_KEY
     reference = rand
     test_email = request.user.email
     test_amount = int(carts.cart_total_price()*100)

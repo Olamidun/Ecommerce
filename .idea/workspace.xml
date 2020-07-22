@@ -2,16 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d25bd1af-d3ef-4e59-9a2a-62cbd17ac507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/carts/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/carts/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/carts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/carts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carts/templates/carts/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/carts/templates/carts/checkout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carts/templates/carts/payment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/carts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/carts/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carts/templates/carts/request-refund.html" beforeDir="false" afterPath="$PROJECT_DIR$/carts/templates/carts/request-refund.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/carts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/carts/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/migrations/0002_product_images.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/migrations/0003_auto_20200531_1414.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/migrations/0004_product_discount_price.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/templates/store/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/store/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/templates/store/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/store/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +151,9 @@
       <workItem from="1594991412001" duration="8717000" />
       <workItem from="1595031877294" duration="1878000" />
       <workItem from="1595081909926" duration="1739000" />
-      <workItem from="1595199758281" duration="8382000" />
+      <workItem from="1595199758281" duration="8872000" />
+      <workItem from="1595286166809" duration="11875000" />
+      <workItem from="1595414337282" duration="2094000" />
     </task>
     <servers />
   </component>
@@ -159,14 +164,14 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="458" y="195" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593137987242">
+    <state x="458" y="195" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1595417297716">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="458" y="195" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1593137987242" />
-    <state x="436" y="98" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592963280543">
+    <state x="458" y="195" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1595417297716" />
+    <state x="436" y="98" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595346645051">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="436" y="98" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1592963280543" />
+    <state x="436" y="98" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1595346645051" />
     <state x="499" y="109" key="FileChooserDialogImpl" timestamp="1593310852894">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -195,6 +200,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="379" y="194" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1595199776237" />
+    <state x="261" y="0" key="scopes" timestamp="1595346846769">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="261" y="0" key="scopes/0.0.1536.824@0.0.1536.824" timestamp="1595346846769" />
     <state x="347" y="-1" width="840" height="1034" key="search.everywhere.popup" timestamp="1593279681641">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

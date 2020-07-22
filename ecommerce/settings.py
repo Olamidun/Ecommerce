@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import cloudinary
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,6 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary',
     'carts.apps.CartsConfig',
     'store.apps.StoreConfig',
     'users.apps.UsersConfig',
@@ -130,12 +133,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_REDIRECT_URL = 'store:home'
 LOGIN_URL = 'users:login'
 
-# secretkey = sk_test_b17ddd192493898c2ceb258eebbe02771cb4aaa9
-# publickey = pk_test_68c6c9aa04092566a7a23b346a69ac4fcfb85c08
+load_dotenv()
+API_SECRET_KEY = os.getenv('PAYSTACK_API_SECRET_KEY')
 
-
-#fw_secret_key = 'FLWSECK_TEST-23b5f27de55727902a405df50dfea980-X'
-# fw_public_key = 'FLWPUBK_TEST-9e5837cc08f1b6e414179a6b489a1709-X'
-# medium_post = "https://medium.com/@olamidunkolapo/c4a7ffce9e5d?source=friends_link&sk=c4d9d2e72d0430d12a457682b4f11565"
-# 'https://medium.com/@olamidunkolapo/model-relationships-in-django-c4a7ffce9e5d?sk=c4d9d2e72d0430d12a457682b4f11565'
-# story_link = 'https://medium.com/@olamidunkolapo/model-relationships-in-django-c4a7ffce9e5d'
+cloudinary_info = cloudinary.config(
+  cloud_name='olamidun',
+  api_key=os.environ.get('API_KEY'),
+  api_secret=os.environ.get('API_SECRET')
+)

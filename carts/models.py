@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class CartItems(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     cart = models.ForeignKey('Cart', on_delete=models.CASCADE, null=True, blank=True)
-    items = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
+    items = models.ForeignKey(Product, on_delete=models.CASCADE)
     line_total = models.FloatField(null=True)
     quantity = models.IntegerField(default=1)
     ordered = models.BooleanField(default=False)

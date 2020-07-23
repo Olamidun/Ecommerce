@@ -10,6 +10,7 @@
           <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
           <p> Don't have an account? <a href="{% url 'users:register' %}">Sign up here</a></p>
           <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+          <span><a class="blog-post-meta" style="text-decoration: none; margin-left: 10px; margin-bottom: 10px;" href="{% url 'password_reset' %}">Forgot Password?</a></span>
 
         </form>
     </div>

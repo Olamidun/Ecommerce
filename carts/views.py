@@ -101,18 +101,18 @@ def checkout(request):
     try:
         cart = Cart.objects.get(user=request.user, ordered=False)
         if request.method == 'POST':
-            forms = BillingAddressForm(request.POST)
-            if forms.is_valid():
-                billing_address = forms.save()
+            form = BillingAddressForm(request.POST)
+            if form.is_valid():
+                billing_address = form.save()
                 cart.billing_address = billing_address
                 cart.save()
                 return redirect('carts:pay')
             else:
                 messages.error(request, 'You cannot submit the form without filling all the form fields appropriately')
         else:
-            forms = BillingAddressForm()
+            form = BillingAddressForm()
         carts = Cart.objects.get(user=request.user, ordered=False)
-        return render(request, 'carts/checkout.html', {'carts': carts, 'forms': forms})
+        return render(request, 'carts/checkout.html', {'carts': carts, 'form': form})
     except ObjectDoesNotExist:
         messages.info(request, 'No active order')
         return redirect('carts:checkout')

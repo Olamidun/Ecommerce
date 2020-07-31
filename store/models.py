@@ -9,6 +9,7 @@ class Product(models.Model):
     price = models.FloatField()
     discount_price = models.FloatField(blank=True, null=True)
     name = models.CharField(max_length=200)
+    details = models.TextField(null=True, blank=True)
     images = CloudinaryField('product_pics', blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(unique=True)

@@ -102,7 +102,7 @@
                         {% endif %}
                         <div class="div-cart-links">
                             <a href="{% url 'carts:add_to_cart' product.slug %}" class="cart-links">Add to Cart |</a>
-                            <a href="order.html" class="cart-links">View Product</a>
+                            <a href="{% url 'store:details' product.slug %}" class="cart-links">View Product</a>
                         </div>
                     </div>
                 </div>

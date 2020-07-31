@@ -4,6 +4,7 @@ html, body {
     font-weight: 300;
     scroll-behavior: smooth;
     font-family: Lato, Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
 }
 
 /* REUSABLE */
@@ -127,6 +128,12 @@ html, body {
         color:#fff !important;
         /*border-bottom: 2px solid #17bed2;*/
     }
+
+    .div-cart-links {
+        width: 70%;
+        margin: -5px 25% 5px 25%;
+    }
+
 
     /* DROPDOWN */
     .dropdown-item {
@@ -381,8 +388,28 @@ html, body {
         text-transform: uppercase;
         /* font-size: 150%; */
     }
+    .products-details-box {
+        background-color: #f3f3f3;
+        padding: 1rem;
+        width: 90%;
+        margin: 10px auto;
+        box-shadow: 7px 7px 10px 0 rgba(76, 110, 245, .1);
+        transition: all ease 0.5s;
+    }
+    /* .products-box:hover {
+        background-color: #e7e7e7;
+        transform: scale(0.9);
+    } */
+
+    .products-details-box p {
+        text-align: center;
+        /* font-size: 150%; */
+    }
+
     .product-price{
-        color: #17bed2;    }
+        color: #17bed2;
+        margin-top: -10px;
+    }
 
     .products-images {
         width: 80%;
@@ -395,6 +422,17 @@ html, body {
         margin: 10px 25%;
     }
 
+    .product-detail-images {
+        width: 50%;
+        margin: 0 25% 0 25%;
+    }
+
+    .product-detail-images img {
+        width: 50%;
+        height: 25%;
+        margin: 10px 25%;
+    }
+
     .cart-links {
         font-size: 80%;
         color: #17bed2;
@@ -402,22 +440,9 @@ html, body {
 
     .div-cart-links {
         width: 90%;
-        margin: 0 auto;
+        margin: -5px 25% 5px 25%;
     }
 
-
-    .div-cart-links input[type="number"] {
-        width: 35%;
-        margin: 5px 30%;
-        border-radius: 3px;
-        font-size: 80%;
-        padding: 3px;
-        display: inline-block;
-    }
-
-    .div-cart-links i {
-        font-size: 80%;
-    }
 
 /* SECTION PRODUCTS */
 

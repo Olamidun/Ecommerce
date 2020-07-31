@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{% static 'store/images_resources/favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="https://res.cloudinary.com/olamidun/image/upload/v1596196446/favicon_b1cjxh.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'store/css/animate.css' %}">
     <link rel="stylesheet" href="{% static 'store/css/bootstrap.min.css' %}">
@@ -86,15 +86,15 @@
         {% if messages %}
             {% for message in messages %}
                 {% if message.success %}
-                    <div class="alert-dismissible alert  alert-success container" role="main">
+                    <div class="alert  alert-{{ message.tags }} container" role="main">
                     {{ message }}
                     </div>
                 {% elif message.info %}
-                    <div class="alert-dismissible alert  alert-info container" role="main">
+                    <div class="alert  alert-{{ message.tags }} container" role="main">
                     {{ message }}
                     </div>
                 {% else %}
-                    <div class="alert-dismissible alert  alert-danger container" role="main">
+                    <div class="alert-dismissible alert  alert-{{ message.tags }} container" role="main">
                     {{ message }}
                     </div>
                 {% endif %}

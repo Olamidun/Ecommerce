@@ -1,0 +1,47 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block header %}
+    <div class="container">
+        <div class="row js--anime-1">
+            <div class="col-lg-7">
+                <h1>&nbsp;</h1>
+            </div>
+            <div class="col-lg-5">
+                <div class="header-text-box">
+                    <h1>The Complete <br> Online Store</h1>
+                    <p>Best Trending Collection here</p>
+                    <a href="{% url 'store:home' %}" class="btn btn-full link-products">Shop Now</a>
+                    <a href="#" class="btn btn-ghost link-offers">Show Me More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    <section class="section-about js--section-about" id="about">
+        <div class="container">
+            <h2>{{ item.slug }}</h2>
+                <div class="row">
+                        <div class="products-details-box">
+                            <div class="product-detail-images">
+                                <img src="{{ item.images.url }}" alt="">
+                            </div>
+                            <p class="item" style="text-transform: capitalize; font-size:16px; margin-top: -25px; ">{{ item.name }}</p>
+                            {% if item.discount_price %}
+                                <p class="product-price" style="font-size:16px">#{{ item.discount_price|floatformat:2 }} <small style="text-transform: capitalize;">discounted price</small></p>
+                            {% else %}
+                                <p class="product-price" style="font-size:16px">#{{ item.price|floatformat:2 }}</p>
+                            {% endif %}
+                            <div class="div-cart-links">
+                                <a href="{% url 'carts:add_to_cart' item.slug %}" class="cart-links">Add to cart |</a>
+                                <a href="{% url 'store:details' item.slug %}" class="cart-links">View product</a>
+                            </div>
+                            <p class="about-header-text js--anime-2">{{ item.details }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+{% endblock %}

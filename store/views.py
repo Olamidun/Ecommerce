@@ -3,6 +3,7 @@ from .models import Product
 from django.core.paginator import EmptyPage, Paginator, PageNotAnInteger
 
 # Create your views here.
+# cart_id = request.session.get('cart_id', None)
 
 
 def home(request):

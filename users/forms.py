@@ -7,7 +7,7 @@ class StoreCustomerForm(UserCreationForm):
     username = forms.CharField(max_length=20,
                                widget=forms.TextInput(
                                      attrs={
-                                         'class': 'form-control mb-2',
+                                         'class': 'form-control',
                                          'placeholder': 'Username'
                                      }
                                  ))
@@ -15,7 +15,7 @@ class StoreCustomerForm(UserCreationForm):
     first_name = forms.CharField(max_length=20,
                                  widget=forms.TextInput(
                                     attrs={
-                                        'class': 'form-control mb-2',
+                                        'class': 'form-control',
                                         'placeholder': 'John'
                                     }
                                  ))
@@ -23,14 +23,14 @@ class StoreCustomerForm(UserCreationForm):
     last_name = forms.CharField(max_length=20,
                                 widget=forms.TextInput(
                                     attrs={
-                                        'class': 'form-control mb-2',
+                                        'class': 'form-control',
                                         'placeholder': 'Doe'
                                     }
                                 ))
 
     email = forms.EmailField(widget=forms.EmailInput(
                                  attrs={
-                                     'class': 'form-control mb-2',
+                                     'class': 'form-control',
                                      'placeholder': 'myemailaddress@gmail.com'
                                  }
                                 ))

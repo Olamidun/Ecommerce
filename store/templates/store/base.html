@@ -10,14 +10,15 @@
     <link rel="stylesheet" href="{% static 'store/css/animate.css' %}">
     <link rel="stylesheet" href="{% static 'store/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/login.css' %}">
     <title>eStore</title>
 </head>
 
 <body>
-    <header class="js--section-home">
+    <header id="home" class="js--section-home">
         <nav class="navbar navbar-expand-sm navbar-light js--nav">
             <div class="container">
-                <img class="link-home logo-white" src="{% static 'store/images_resources/eStore White.png' %}" alt="White Logo">
+                <img class="link-home logo-white" src="https://res.cloudinary.com/olamidun/image/upload/v1596193816/eStore_White_nmcrcv.png" alt="White Logo">
                 <img class="link-home logo-green" src="{% static 'store/images_resources/e-Store Green.png' %}" alt="Green Logo">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="ti-menu js--menu-icon"></span>
@@ -32,25 +33,50 @@
                       </ul>
                   <ul class="navbar-nav nav-links navbar-right">
                     <li class="nav-item">
-                        <a href="{% url 'store:home' %}" class="nav-link link-home">Home</a>
+                        <a href="{% url 'store:home' %}" class="nav-link link-home mt-1" >Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link link-about">About</a>
+                      <li class="nav-item">
+                        <a href="#offers" class="nav-link link-offers mt-1">Offers</a>
                     </li>
+{#                    <li class="nav-item">#}
+{#                        <a href="#about" class="nav-link link-about pt-3">About</a>#}
+{#                    </li>#}
                     <li class="nav-item">
-                        <a href="#" class="nav-link link-offers">Offers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link link-contact">Contact</a>
+                        <a href="#offers" class="nav-link link-offers mt-1">Offers</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Order</a>
+                        <a class="nav-link dropdown-toggle mt-1" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Contact"><i class="fa fa-user"></i>
+
+                        </a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
-                          <a class="dropdown-item link-products" href="{% url 'store:home' %}">Products</a>
+                          <a class="dropdown-item link-billing" href="{% url 'users:login' %}">Sign In </a>
+                          <a class="dropdown-item link-billing" href="{% url 'users:register' %}">Sign Up </a>
                         </div>
                       </li>
                     <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Shopping Cart">
-                        <a href="{% url "carts:order_summary" %}" class="nav-link"><i class="fa fa-shopping-cart"></i>  {{ request.user|cart_item_count }}</a>
+                        <a href="{% url "carts:order_summary" %}" class="nav-link mt-1"><i class="fa fa-shopping-cart"></i>  {{ request.user|cart_item_count }}</a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link">
+                            <form method="GET">
+                                <div class="search-bar">
+                                    <input type="search" class="form-control search-form" name="q" value="{{ request.GET.q }}" placeholder="Search">
+                                    <button type="submit" class="btn btn-sm search-button mt-1 mb-1"> search</button>
+                            </div>
+                            </form>
+                        </a>
+{#                        <a href="#" class="nav-link mt-3">#}
+{#            <button type="submit" class="btn btn-outline-primary" style="margin-bottom: 10px;">Search</button>#}
+{#                            <div class="search-bar">#}
+{#                                <form method="GET">#}
+{#                                    <div class="col-md-6 mb-3">#}
+{#                                        <input type="search" class="form-control" style="width: 110%" placeholder="Search Products" name="q"#}
+{#                                           value="{{ request.GET.q }}">#}
+{#                                    </div>#}
+{#                                    <button type="submit"><i class="fa fa-search" style="margin-right: 10px;"></i></button>#}
+{#                                </form>#}
+{#                            </div>#}
+{#                        </a>#}
                     </li>
                   </ul>
                 </div>
@@ -68,7 +94,7 @@
                     {{ message }}
                     </div>
                 {% else %}
-                    <div class="alert-dismissible alert  alert-info container" role="main">
+                    <div class="alert-dismissible alert  alert-danger container" role="main">
                     {{ message }}
                     </div>
                 {% endif %}
@@ -87,8 +113,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright © 2020 by Babayega. All rights reserved.</p>
-                    <a href="{% url 'store:home' %}" class="link-home">Back to top</a>
+                    <p>Copyright © 2020 by Kolapo Olamidun and Jinadu Paul Peace . All rights reserved.</p>
+                    <a href="#home" class="link-home">Back to top</a>
                 </div>
             </div>
         </div>

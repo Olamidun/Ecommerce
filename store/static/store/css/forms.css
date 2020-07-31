@@ -1,10 +1,4 @@
-/* SECTION SIGN IN */
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-    html, body {
+html, body {
     text-rendering: optimizeLegibility;
     font-size: 20px;
     font-weight: 300;
@@ -12,30 +6,31 @@
     font-family: Lato, Arial, Helvetica, sans-serif;
 }
 
-section {
-	padding: 80px 0;
+
+input:focus {
+        outline: 1px solid #fcfcfc;
 }
-
-
-
-
-.row{
-	max-width: 1140px;
-	margin: 0 auto;
-}
-
 
 .contact-form{
 	width: 60%;
-	margin: 0 20%;
+	margin: 0 auto;
 }
+.contact-form:last-child{margin-left: 30%;}
 input[type=text],
 input[type=email],
 input[type=submit],
-input[type=password]
-{
-	border: 1px solid  #e8e8e8;
-	border-radius: 15px;
-	width: 100%;
-}
 
+select,
+textarea {
+	border: 1px solid  #e8e8e8;
+	border-radius: 1px;
+	width: 100%;
+	padding: 7px;
+}
+textarea{
+	height:100px;
+}
+input[type= checkbox]
+{
+	margin: 10px 5px 10px 0;
+}

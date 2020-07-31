@@ -1,17 +1,41 @@
 {% extends "store/base.html" %}
 {% block content %}
-    <div class="container" style="width: 60%; margin-top: 10%">
-        <form method="POST" class="form-signin">
-          {% csrf_token %}
-          <h1 class="h3 mb-3 font-weight-normal" style="text-align: center;">Login to continue shopping</h1>
-          <label for="inputUsername" class="sr-only" style="padding-bottom: -3px;">Username</label>
-          <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required>
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
-          <p> Don't have an account? <a href="{% url 'users:register' %}">Sign up here</a></p>
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-          <span><a class="blog-post-meta" style="text-decoration: none; margin-left: 10px; margin-bottom: 10px;" href="{% url 'password_reset' %}">Forgot Password?</a></span>
+    <section class="section-form">
+		<div class="row">
+			<h2>Login</h2>
+		</div>
+		<div class="row">
+			<form method="post" action="#" class="contact-form">
+                {% csrf_token %}
+                <div class="row">
+                    <input type="text" name="username" id="username" placeholder="Username" required >
+                </div>
+                <div class="row">
+                    <input type="password" name="password" id="password" placeholder="Password" required >
+                </div>
+                <div class="row">
+                    <button type="submit" class="btn btn-outline-secondary btn-sm mt-2">Login</button>
+				</div>
+			</form>
+		</div>
+    </section>
 
-        </form>
-    </div>
+
+
+
+
+{#    <div class="container" style="width: 60%; margin-top: 10%">#}
+{#        <form method="POST" class="form-signin">#}
+{#          {% csrf_token %}#}
+{#          <h1 class="h3 mb-3 font-weight-normal" style="text-align: center;">Login to continue shopping</h1>#}
+{#          <label for="inputUsername" class="sr-only" style="padding-bottom: -3px;">Username</label>#}
+{#          <input type="text" id="inputUsername" placeholder="Username" name="username" required>#}
+{#          <label for="inputPassword" class="sr-only">Password</label>#}
+{#          <input type="password" id="inputPassword" placeholder="Password" name="password" required>#}
+{#          <p> Don't have an account? <a href="{% url 'users:register' %}">Sign up here</a></p>#}
+{#          <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>#}
+{#          <span><a class="blog-post-meta" style="text-decoration: none; margin-left: 10px; margin-bottom: 10px;" href="{% url 'password_reset' %}">Forgot Password?</a></span>#}
+{##}
+{#        </form>#}
+{#    </div>#}
 {% endblock %}

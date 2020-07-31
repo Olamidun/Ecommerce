@@ -21,8 +21,38 @@ class CartItems(models.Model):
             return self.quantity * self.items.price
 
 
+# user = User
+
+
+# class CartManager(models.Manager):
+#     def new_cart_or_get(self, request):
+#         cart_id = request.session.get('cart_id', None)
+#         cart_qs = self.get_queryset().filter(id=cart_id)
+#
+#         # Check if the cart does exist
+#         if cart_qs.count() == 1:
+#             new_obj = False
+#             carts = cart_qs.first()
+#             if request.user.is_authenticated() and carts.user is None:
+#                 carts.user = request.user
+#                 carts.save()
+#         else:
+#             carts = Cart.objects.new_cart(user=request.user)
+#             new_obj = True
+#             request.session['cart_id'] = carts.id
+#         return carts, new_obj
+#
+#     def new_cart(self, user=None):
+#         user_obj = None
+#         if user is not None:
+#             if user.is_authenticated():
+#                 user_obj = user
+#         return self.model.objects.create(user=user_obj)
+
+
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    # objects = CartManager()
     items = models.ManyToManyField(CartItems, null=True, blank=True, related_name='item_cart')
     created_on = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

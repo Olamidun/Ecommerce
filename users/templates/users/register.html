@@ -1,11 +1,36 @@
 {% extends "store/base.html" %}
 {% block content %}
-    <form method="POST">
-        {% csrf_token %}
-        <div class="container">
-            {{ form.as_p }}
-            <button class="btn btn-sm btn-outline-primary" type="submit">Sign up</button>
-        </div>
-    </form>
+    <section class="section-form">
+		<div class="row">
+			<h2>Sign Up!</h2>
+		</div>
+		<div class="row">
+			<form method="post" class="contact-form">
+                {% csrf_token %}
+                <div class="row">
+                    {{form.first_name}}
+				</div>
+                <div class="row">
+                    {{form.last_name}}
+				</div>
+                <div class="row">
+                    {{ form.username }}
+				</div>
+				<div class="row">
+                    {{ form.email }}
+				</div>
+                <div class="row">
+                    {{ form.password1 }}
+				</div>
+                <div class="row">
+                    {{ form.password2 }}
+				</div>
+                <div class="row">
+                    <button type="submit" value="submit" class="btn btn-outline-secondary btn-sm">Register</button>
+				</div>
+			</form>
+		</div>
+    </section>
 
 {% endblock %}
+

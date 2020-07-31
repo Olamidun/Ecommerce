@@ -19,20 +19,23 @@ import string
 @login_required
 def order_summary(request):
     try:
+        request.session.set_expiry(43200)
         carts = Cart.objects.get(user=request.user, ordered=False)
         return render(request, 'carts/cart.html', {'carts': carts})
     except ObjectDoesNotExist:
         messages.error(request, 'You do not have an active order.')
         return redirect("store:home")
 
-
 @login_required
 def add_to_cart(request, slug):
+    cart_id = request.session.get('cart_id', None)
     item = get_object_or_404(Product, slug=slug)
     cart_item, created = CartItems.objects.get_or_create(items=item,
                                                          user=request.user,
                                                          ordered=False)
-    cart_qs = Cart.objects.filter(user=request.user, ordered=False)
+    cart_qs = Cart.objects.filter(id=cart_id, user=request.user, ordered=False)
+    print(cart_id)
+    print(cart_qs)
     if cart_qs.exists():
         order = cart_qs[0]
         if order.items.filter(items__slug=item.slug).exists():
@@ -47,10 +50,12 @@ def add_to_cart(request, slug):
     else:
         order = Cart.objects.create(user=request.user, created_on=timezone.now())
         order.items.add(cart_item)
+        request.session['cart_id'] = order.id
+        # print(order.id)
         messages.success(request, 'Your order item has been updated.')
         return redirect("store:home")
 
-
+@login_required
 def remove_from_cart(request, slug):
     item = get_object_or_404(Product, slug=slug)
     cart_qs = Cart.objects.filter(user=request.user, ordered=False)
@@ -72,7 +77,7 @@ def remove_from_cart(request, slug):
         messages.error(request, 'You do not have an active order.')
         return redirect("carts:order_summary")
 
-
+@login_required
 def reduce_quantity_of_items(request, slug):
     item = get_object_or_404(Product, slug=slug)
     cart_qs = Cart.objects.filter(user=request.user, ordered=False)
@@ -96,7 +101,7 @@ def reduce_quantity_of_items(request, slug):
         messages.info(request, 'You do not have an active order.')
         return redirect("carts:order_summary")
 
-
+@login_required
 def checkout(request):
     try:
         cart = Cart.objects.get(user=request.user, ordered=False)
@@ -117,7 +122,7 @@ def checkout(request):
         messages.info(request, 'No active order')
         return redirect('carts:checkout')
 
-
+@login_required
 def pay(request):
     carts = Cart.objects.get(user=request.user, ordered=False)
     rand = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(16)])
@@ -148,7 +153,7 @@ def pay(request):
     carts.save()
     return redirect(authorization_url)
 
-
+@login_required
 def request_refund(request):
     if request.method == 'POST':
         form = RefundForm(request.POST)
@@ -160,7 +165,7 @@ def request_refund(request):
                 cart = Cart.objects.get(reference=ref_code)
                 cart.request_refund = True
                 cart.save()
-                #STORE THE REFUND
+                # STORE THE REFUND
                 refund = Refund()
                 refund.cart = cart
                 refund.reason = message

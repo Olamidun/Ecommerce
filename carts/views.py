@@ -1,5 +1,4 @@
 from django.shortcuts import get_object_or_404, HttpResponse, redirect, render
-from django.http import HttpResponseRedirect
 from django.core.exceptions import ObjectDoesNotExist
 from carts.models import Cart, CartItems, Payment, Refund
 from django.contrib.auth.models import User
@@ -9,8 +8,6 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from carts.forms import BillingAddressForm, RefundForm
 from paystack.resource import TransactionResource
-from pypaystack import Transaction
-from python_paystack.paystack_config import PaystackConfig
 from django.conf import settings
 import random
 import string

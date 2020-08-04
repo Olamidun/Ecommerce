@@ -23,12 +23,13 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@fe4$v=*u_(vygn$rm_cgi48g@it4i@9u%yqeio!pcnv^*ccd*'
+#SECRET_KEY = '@fe4$v=*u_(vygn$rm_cgi48g@it4i@9u%yqeio!pcnv^*ccd*'
+SECRET_KEY = os.environ.get('ESTORE_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['estore-olamidun.herokuapp.com']
 
 
 # Application definition
@@ -144,7 +145,7 @@ EMAIL_HOST_USER = os.environ.get("EMAIL_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 
 cloudinary_info = cloudinary.config(
-  cloud_name='olamidun',
+  cloud_name=os.environ.get('CLOUD_NAME'),
   api_key=os.environ.get('API_KEY'),
   api_secret=os.environ.get('API_SECRET')
 )

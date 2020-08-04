@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Page not found</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'store/css/bootstrap.min.css' %}">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'store/css/404.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">OOPS! 404</h1>
+          <p class="container">We are sorry, the page you requested was not found.</p>
+          <p><a class="btn btn-primary btn-lg" href="{% url 'store:home' %}" role="button">Back to home</a></p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="container">
+      <p>Copyright © 2020 by Kolapo Olamidun and Jinadu Paul Peace . All rights reserved.</p>
+    </footer>
+  </body>
+</html>

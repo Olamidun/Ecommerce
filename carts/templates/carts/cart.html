@@ -21,6 +21,26 @@
             <div class="row">
                 <h2>Order List</h2>
             </div>
+            <div class="container" style="margin-top: 10px;">
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.success %}
+                            <div class="alert  alert-{{ message.tags }} container" role="main">
+                            {{ message }}
+                            </div>
+                        {% elif message.info %}
+                            <div class="alert  alert-{{ message.tags }} container" role="main">
+                            {{ message }}
+                            </div>
+                        {% else %}
+                            <div class="alert-dismissible alert  alert-{{ message.tags }} container" role="main">
+                            {{ message }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+
             <div class="row js--anime-5">
                 <div class="col-lg-12">
                     <div class="table-responsive">

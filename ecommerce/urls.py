@@ -22,7 +22,7 @@ from django.contrib.auth.views import (PasswordResetCompleteView, PasswordResetD
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('abracadabra/', admin.site.urls, name='abracadabra'),
     path('', include('store.urls')),
     path('cart/', include('carts.urls', namespace='carts')),
     path('user/', include('users.urls', namespace='users')),
@@ -38,5 +38,7 @@ urlpatterns = [
          name='password_reset_complete'),
 
 ]
+
+handler404 = 'carts.views.error_404'
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

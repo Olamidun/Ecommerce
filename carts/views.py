@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, HttpResponse, redirect, render
+from django.shortcuts import get_object_or_404, HttpResponseRedirect, redirect, render
 from django.core.exceptions import ObjectDoesNotExist
 from carts.models import Cart, CartItems, Payment, Refund
 from django.contrib.auth.models import User
@@ -11,6 +11,11 @@ from paystack.resource import TransactionResource
 from django.conf import settings
 import random
 import string
+
+
+
+def error_404(request, exception):
+    return render(request, '404.html')
 
 
 @login_required
@@ -41,13 +46,12 @@ def add_to_cart(request, slug):
             return redirect("carts:order_summary")
         else:
             order.items.add(cart_item)
-            messages.info(request, 'Your Item has been added to cart successfully!')
+            messages.success(request, 'Your Item has been added to cart successfully!')
             return redirect("store:home")
     else:
         order = Cart.objects.create(user=request.user, created_on=timezone.now())
         order.items.add(cart_item)
         request.session['cart_id'] = order.id
-        # print(order.id)
         messages.success(request, 'Your order item has been updated.')
         return redirect("store:home")
 
@@ -65,14 +69,14 @@ def remove_from_cart(request, slug):
 
             order.items.remove(cart_item)
             cart_item.delete()
-            messages.info(request, 'This item has been removed from your cart.')
-            return redirect("carts:order_summary")
+            messages.success(request, 'This item has been removed from your cart.')
+            return redirect("store:home")
         else:
-            messages.info(request, 'This item is not in your cart.')
+            messages.success(request, 'This item is not in your cart.')
             return redirect("store:home")
     else:
-        messages.error(request, 'You do not have an active order.')
-        return redirect("carts:order_summary")
+        messages.success(request, 'You do not have an active order.')
+        return redirect("store:home")
 
 
 @login_required
@@ -90,13 +94,13 @@ def reduce_quantity_of_items(request, slug):
                 cart_item.save()
             else:
                 order.items.remove(cart_item)
-            messages.info(request, 'The quantity of this item was updated.')
+            messages.success(request, 'The quantity of this item was updated.')
             return redirect("carts:order_summary")
         else:
-            messages.info(request, 'This item is not in the cart.')
+            messages.success(request, 'This item is not in the cart.')
             return redirect("store:home")
     else:
-        messages.info(request, 'You do not have an active order.')
+        messages.success(request, 'You do not have an active order.')
         return redirect("carts:order_summary")
 
 
@@ -112,7 +116,7 @@ def checkout(request):
                 cart.save()
                 return redirect('carts:pay')
             else:
-                messages.error(request, 'You cannot submit the form without filling all the form fields appropriately')
+                messages.success(request, 'You cannot submit the form without filling all the form fields appropriately')
         else:
             form = BillingAddressForm()
         carts = Cart.objects.get(user=request.user, ordered=False)
@@ -133,7 +137,6 @@ def pay(request):
     client = TransactionResource(secret_key, reference)
     response = client.initialize(test_amount, test_email)
     authorization_url = response['data']['authorization_url']
-    print(response)
     # authorization = client.authorize()
 
     # create payment object
@@ -183,7 +186,3 @@ def request_refund(request):
     else:
         form = RefundForm()
         return render(request, 'carts/request-refund.html', {'form': form})
-
-
-
-

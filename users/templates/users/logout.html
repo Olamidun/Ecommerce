@@ -1,12 +1,18 @@
 {% extends "store/base.html" %}
 {% block content %}
-    <form method="POST">
-        {% csrf_token %}
+    <section class="section-about js--section-about" id="about">
         <div class="container">
-            <h3>You have logged out successfully</h3>
-            <p><a href="{% url 'users:login' %}">Login again</a></p>
-            <button type="submit">Login</button>
-        </div>
-    </form>
+                <p class="about-header-text js--anime-2">You have logged out successfully</p>
+                <p class="about-header-text js--anime-2"><a href="{% url 'users:login' %}">Login again</a></p>
+            </div>
+    </section>
+
+{#    <form method="POST">#}
+{#        {% csrf_token %}#}
+{#        <div class="container">#}
+{#            <h3>You have logged out successfully</h3>#}
+{#            <p><a href="{% url 'users:login' %}">Login again</a></p>#}
+{#        </div>#}
+{#    </form>#}
 
 {% endblock %}

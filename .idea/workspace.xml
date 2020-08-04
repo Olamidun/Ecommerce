@@ -3,27 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d25bd1af-d3ef-4e59-9a2a-62cbd17ac507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/carts/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carts/templates/carts/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/carts/templates/carts/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carts/templates/carts/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/carts/templates/carts/checkout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/carts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/migrations/0002_product_images.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/migrations/0003_auto_20200531_1414.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/migrations/0004_product_discount_price.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/migrations/0005_auto_20200721_1701.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/migrations/0006_product_details.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/static/store/css/forms.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/store/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/store/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/store/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/store/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/store/items-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/store/items-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/logout.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/logout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +163,7 @@
       <workItem from="1596251688493" duration="1811000" />
       <workItem from="1596255150073" duration="677000" />
       <workItem from="1596407599145" duration="17713000" />
-      <workItem from="1596494728272" duration="7586000" />
+      <workItem from="1596494728272" duration="8725000" />
     </task>
     <servers />
   </component>

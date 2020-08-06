@@ -67,7 +67,11 @@
                             </div>
                             <div>
                                 <p class="login-option">Forgotten your password?
-                                    <a href="{% url 'password_reset' %}">Reset Here</a></p>
+                                    <a href="{% url 'password_reset' %}">Reset Here</a>
+                                </p>
+                                <p class="login-option">Not yet registered?
+                                    <a href="{% url 'users:register' %}">Sign up here</a>
+                                </p>
                             </div>
                         </div>
                     </div>

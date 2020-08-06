@@ -598,6 +598,11 @@ footer a:active {
         height: 100vh;
     }
 
+    .login-option{
+        margin-left: 5px;
+        font-size: 15px;
+    }
+
     .form-box {
         background-color: #25d8ec;
         border-radius: 10px;

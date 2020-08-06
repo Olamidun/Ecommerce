@@ -49,7 +49,8 @@ def register(request):
                 [email]
             )
             activation_mail.send()
-            messages.success(request, 'Your account has been created successfully, please check your mailto verify your account!')
+            messages.success(request, 'Your account has been created successfully,'
+                                      ' please check your mail to verify your account!')
             return redirect('users:login')
         elif password != password2:
             messages.success(request, 'Please ensure your passwords are the same.')

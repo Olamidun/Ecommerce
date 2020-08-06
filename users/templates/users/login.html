@@ -1,7 +1,6 @@
 {% extends "store/base.html" %}
 {% block content %}
-    <section class="section-billing js--section-billing">
-        <div class="container">
+    <div class="container">
             <div class="row">
                 <h2>Login here</h2>
             </div>
@@ -24,35 +23,111 @@
                     {% endfor %}
                 {% endif %}
             </div>
-            <div class="row js--anime-6">
-                <div class="col-lg-12">
-                    <div class="billing-box">
-                        <form method="POST">
-                            {% csrf_token %}
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <input type="text" name="username" value="{{ data.username }}" placeholder="Enter your username" required >
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <input type="password" name="password" placeholder="Enter your password" style="margin-bottom: 10px; height: 36px;" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                   <div class="form-sub">
-                                    <button type="submit" class="btn btn-sm btn-primary">Login</button>
-                                       <p>Forgotten your password? <a href="{% url 'password_reset' %}">Reset Here</a></p>
-                                   </div>
-                                </div>
-                            </div>
-                        </form>
+    </div>
+    <section class="section-s-in">
+        <div class="row">
+            <form method="POST" class="form-box">
+                {% csrf_token %}
+               <div class="form-content">
+                    <div class="row">
+                        <div class="form-heading">
+                            <p class="form-header">eStore Sign in</p>
+                        </div>
                     </div>
-                </div>
-            </div>
+                   <div class="row">
+                        <div class="col-lg-4">
+                            <div class="row">
+                                <label for="">Username: </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <input type="text" name="username" value="{{ data.fullname }}" placeholder="Your username..." required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="row">
+                                <label for="">Password: </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <input type="password" name="password" placeholder="Your password.." required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="row">
+                                <label for="">&nbsp; </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <button type="submit" class="btn btn-full">Sign in</button>
+                                <p>Forgotten your password? <a href="{% url 'password_reset' %}">Reset Here</a></p>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </form>
         </div>
     </section>
+{#    <section class="section-billing js--section-billing">#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <h2>Login here</h2>#}
+{#            </div>#}
+{#            <div class="container" style="margin-top: 10px;">#}
+{#                {% if messages %}#}
+{#                    {% for message in messages %}#}
+{#                        {% if message.success %}#}
+{#                            <div class="alert  alert-{{ message.tags }} container" role="main">#}
+{#                            {{ message }}#}
+{#                            </div>#}
+{#                        {% elif message.info %}#}
+{#                            <div class="alert  alert-{{ message.tags }} container" role="main">#}
+{#                            {{ message }}#}
+{#                            </div>#}
+{#                        {% else %}#}
+{#                            <div class="alert-dismissible alert  alert-{{ message.tags }} container" role="main">#}
+{#                            {{ message }}#}
+{#                            </div>#}
+{#                        {% endif %}#}
+{#                    {% endfor %}#}
+{#                {% endif %}#}
+{#            </div>#}
+{#            <div class="row js--anime-6">#}
+{#                <div class="col-lg-12">#}
+{#                    <div class="billing-box">#}
+{#                        <form method="POST">#}
+{#                            {% csrf_token %}#}
+{#                            <div class="row">#}
+{#                                <div class="col-lg-12">#}
+{#                                    <input type="text" name="username" value="{{ data.username }}" placeholder="Enter your username" required >#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="row">#}
+{#                                <div class="col-lg-12">#}
+{#                                    <input type="password" name="password" placeholder="Enter your password" style="margin-bottom: 10px; height: 36px;" required>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="row">#}
+{#                                <div class="col-lg-12">#}
+{#                                   <div class="form-sub">#}
+{#                                    <button type="submit" class="btn btn-sm btn-primary">Login</button>#}
+{#                                       <p>Forgotten your password? <a href="{% url 'password_reset' %}">Reset Here</a></p>#}
+{#                                   </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </form>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
 
 
 
